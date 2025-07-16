@@ -1,4 +1,4 @@
 package com.wapp.carapp.database.dao;
 
-public class ItemsDao {
+public class CarsDao {
 }
