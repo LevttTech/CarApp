@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CarApp</string>
+    <string name="title">%s</string>
+    <string name="manufacture">Manufacture: %s</string>
 </resources>
