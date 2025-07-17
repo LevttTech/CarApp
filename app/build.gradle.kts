@@ -68,5 +68,8 @@ dependencies {
     // explicitly depend on RxJava's latest version for bug fixes and new features.
     // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
     implementation("io.reactivex.rxjava3:rxjava:3.1.5")
-
+    implementation(libs.retrofit.v290)
+    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
+    implementation("com.google.code.gson:gson:2.13.1")
+    implementation("com.squareup.retrofit2:converter-gson:2.1.0")
 }
