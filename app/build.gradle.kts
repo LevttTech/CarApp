@@ -46,9 +46,6 @@ dependencies {
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
 
-    // optional - RxJava2 support for Room
-    implementation("androidx.room:room-rxjava2:$room_version")
-
     // optional - RxJava3 support for Room
     implementation("androidx.room:room-rxjava3:$room_version")
 
@@ -67,7 +64,6 @@ dependencies {
     // Because RxAndroid releases are few and far between, it is recommended you also
     // explicitly depend on RxJava's latest version for bug fixes and new features.
     // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
-    implementation("io.reactivex.rxjava3:rxjava:3.1.5")
     implementation(libs.retrofit.v290)
     implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
     implementation("com.google.code.gson:gson:2.13.1")

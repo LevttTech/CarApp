@@ -5,14 +5,14 @@ import android.app.Application;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.wapp.carapp.database.dao.CarsDao;
-import com.wapp.carapp.database.entities.CarEntity;
+import com.wapp.carapp.database.dao.BrandDao;
+import com.wapp.carapp.database.entities.BrandEntity;
 
-@androidx.room.Database(entities = {CarEntity.class}, version = 1)
+@androidx.room.Database(entities = {BrandEntity.class}, version = 1,exportSchema = false)
 public abstract class Database extends RoomDatabase {
     private static Database instance = null;
     private static final String DB_NAME = "db";
-    public abstract CarsDao carsDao();
+    public abstract BrandDao brandDao();
     public static Database getInstance(Application application) {
         if (instance == null) {
             instance = Room.databaseBuilder(
