@@ -6,6 +6,7 @@ public class Brand {
     private String brandCountry;
 
 
+
     public Brand(String brandName, String brandLogo, String brandCountry) {
         this.brandName = brandName;
         this.brandLogo = brandLogo;
