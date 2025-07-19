@@ -42,12 +42,6 @@ public class MainViewModel extends AndroidViewModel {
         compositeDisposable.add(d);
     }
 
-    public void dbg() {
-        List<Brand> currentBrands = brands.getValue();
-        for (Brand brand : currentBrands) {
-            Log.d(TAG,String.format("brandName = %s|brandLogo = %s|brandCountry = %s",brand.getBrandName(),brand.getBrandLogo(),brand.getBrandCountry()));
-        }
-    }
     @Override
     protected void onCleared() {
         super.onCleared();

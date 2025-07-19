@@ -15,13 +15,15 @@ import com.wapp.carapp.models.Brand;
 import com.wapp.carapp.models.Car;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BrandsAdapter extends RecyclerView.Adapter<BrandsAdapter.ItemsViewHolder> {
 
-    private ArrayList<Brand> brands = new ArrayList<>();
+    private List<Brand> brands = new ArrayList<>();
 
-    public void setItems(ArrayList<Brand> brands) {
+    public void setItems(List<Brand> brands) {
         this.brands = brands;
+        notifyDataSetChanged();
     }
 
     @NonNull
