@@ -42,7 +42,7 @@ public class MainViewModel extends AndroidViewModel {
         compositeDisposable.add(d);
     }
 
-    @Override
+        @Override
     protected void onCleared() {
         super.onCleared();
         Log.d(TAG,"onCleared()");
