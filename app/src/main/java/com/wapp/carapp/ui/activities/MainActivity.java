@@ -15,6 +15,7 @@ import com.wapp.carapp.R;
 import com.wapp.carapp.database.Database;
 import com.wapp.carapp.models.Brand;
 import com.wapp.carapp.ui.adapters.BrandsAdapter;
+import com.wapp.carapp.ui.adapters.IRecyclerViewAdapter;
 import com.wapp.carapp.utils.Utils;
 import com.wapp.carapp.viewmodels.MainViewModel;
 
@@ -36,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         brandsAdapter = new BrandsAdapter();
+        brandsAdapter.setOnClickItemListener(new IRecyclerViewAdapter.OnItemClickListener<Brand>() {
+            @Override
+            public void onItemClick(Brand item) {
+                Log.d("RV", "item" + item);
+            }
+        });
         recyclerView = findViewById(R.id.recyclerViewItems);
         recyclerView.setAdapter(brandsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(
@@ -47,11 +54,13 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getBrands().observe(this, new Observer<List<Brand>>() {
             @Override
             public void onChanged(List<Brand> brands) {
-                brandsAdapter.setItems(brands);
+                brandsAdapter.updateItems(brands);
                 Log.d(TAG,"changed");
                 Utils.dbg(brands);
             }
         });
+
+
 
         viewModel.loadBrands();
     }

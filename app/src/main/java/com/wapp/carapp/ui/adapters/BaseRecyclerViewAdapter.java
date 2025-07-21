@@ -1,5 +1,6 @@
 package com.wapp.carapp.ui.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ public abstract class BaseRecyclerViewAdapter<T>
     @Override
     public void updateItems(List<T> items) {
         this.items = items;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -75,7 +77,6 @@ public abstract class BaseRecyclerViewAdapter<T>
 
         public void bind(T item) {
             bindView(itemView, item);
-
         }
     }
 }
