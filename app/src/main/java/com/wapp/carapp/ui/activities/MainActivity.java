@@ -6,7 +6,6 @@ import android.util.Log;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.wapp.carapp.R;
 import com.wapp.carapp.database.Database;
 import com.wapp.carapp.models.Brand;
-import com.wapp.carapp.ui.adapters.BrandsAdapter;
-import com.wapp.carapp.ui.adapters.IRecyclerViewAdapter;
+import com.wapp.carapp.ui.adapters.BrandAdapter;
+import com.wapp.carapp.ui.adapters.InterfaceBaseAdapter;
 import com.wapp.carapp.utils.Utils;
 import com.wapp.carapp.viewmodels.MainViewModel;
 
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Database database;
     private static final String TAG = "MainActivity";
     private MainViewModel viewModel;
-    private BrandsAdapter brandsAdapter;
+    private BrandAdapter brandsAdapter;
     private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
-        brandsAdapter = new BrandsAdapter();
-        brandsAdapter.setOnClickItemListener(new IRecyclerViewAdapter.OnItemClickListener<Brand>() {
+        brandsAdapter = new BrandAdapter();
+        brandsAdapter.setOnClickItemListener(new InterfaceBaseAdapter.OnItemClickListener<Brand>() {
             @Override
             public void onItemClick(Brand item) {
                 Log.d("RV", "item" + item);

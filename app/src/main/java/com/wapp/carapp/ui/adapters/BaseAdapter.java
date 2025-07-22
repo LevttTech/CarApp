@@ -1,24 +1,18 @@
 package com.wapp.carapp.ui.adapters;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.wapp.carapp.R;
-import com.wapp.carapp.models.Car;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseRecyclerViewAdapter<T>
-        extends RecyclerView.Adapter<BaseRecyclerViewAdapter<T>.ViewHolder>
-        implements IRecyclerViewAdapter<T> {
+public abstract class BaseAdapter<T>
+        extends RecyclerView.Adapter<BaseAdapter<T>.ViewHolder>
+        implements InterfaceBaseAdapter<T> {
 
     private List<T> items = new ArrayList<>();
     private OnItemClickListener<T> listener;

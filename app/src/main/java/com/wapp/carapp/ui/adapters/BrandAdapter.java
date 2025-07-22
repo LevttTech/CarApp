@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide;
 import com.wapp.carapp.R;
 import com.wapp.carapp.models.Brand;
 
-public class BrandsAdapter extends BaseRecyclerViewAdapter<Brand> {
+public class BrandAdapter extends BaseAdapter<Brand> {
 
 
     @Override
