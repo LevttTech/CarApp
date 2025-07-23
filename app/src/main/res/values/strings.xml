@@ -2,7 +2,8 @@
     <string name="app_name">CarApp</string>
     <string name="title">%s</string>
     <string name="manufacture">Manufacture: %s</string>
-    <string name="s_modelName">%s</string>
-    <string name="s_productionYears">%s</string>
-    <string name="s_bodyTypes">%s</string>
+    <string name="model_with_prefix">Model of car: %s</string>
+    <string name="years_with_prefix">Production years: %s</string>
+    <string name="body_with_prefix">Body types: %s</string>
+    <string name="transmission_with_prefix">Transmission types: %s</string>
 </resources>

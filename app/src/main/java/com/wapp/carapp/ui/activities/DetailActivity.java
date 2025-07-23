@@ -1,5 +1,6 @@
 package com.wapp.carapp.ui.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.wapp.carapp.viewmodels.DetailViewModel;
 import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
+    private static final String BRAND_EXTRA = "brand";
     private DetailViewModel viewModel;
     private String brandName;
     private RecyclerView recyclerView;
@@ -30,28 +32,44 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_detail);
+        initViews();
+        initDataFromIntent();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Intent intent = getIntent();
-        recyclerView = findViewById(R.id.recyclerViewCars);
-        adapter = new CarsAdapter();
-        recyclerView.setAdapter(adapter);
 
-        brandName = intent.getStringExtra("brand");
+        adapter = new CarsAdapter();
         viewModel = new ViewModelProvider(this).get(DetailViewModel.class);
 
+        recyclerViewSettings();
         viewModel.getCars().observe(this, new Observer<List<Car>>() {
             @Override
             public void onChanged(List<Car> cars) {
-                Log.d("DetailActivity","changed");
                 adapter.updateItems(cars);
             }
         });
 
         viewModel.loadCarsByBrand(brandName);
 
+    }
+
+    public static Intent newIntent(Context context, String brandName) {
+        Intent intent = new Intent(context,DetailActivity.class);
+        intent.putExtra("brand", brandName);
+        return intent;
+    }
+
+    private void initViews() {
+        recyclerView = findViewById(R.id.recyclerViewCars);
+    }
+
+    private void initDataFromIntent() {
+        brandName = getIntent().getStringExtra(BRAND_EXTRA);
+    }
+
+    private void recyclerViewSettings() {
+        recyclerView.setAdapter(adapter);
     }
 }

@@ -28,7 +28,6 @@
         app:layout_constraintTop_toBottomOf="@id/cardView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/s_modelName"
         android:textSize="32sp"
         tools:text="audi:">
     </TextView>
@@ -39,7 +38,6 @@
         app:layout_constraintTop_toBottomOf="@id/textViewModelName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/s_productionYears"
         android:textSize="24sp"
         tools:text="productionYears"/>
     <TextView
@@ -49,7 +47,6 @@
         app:layout_constraintTop_toBottomOf="@id/textViewProductionYears"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/s_bodyTypes"
         android:textSize="24sp"
         tools:text="bodyTypes">
     </TextView>
@@ -61,7 +58,6 @@
         app:layout_constraintTop_toBottomOf="@id/textViewBodyTypes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/s_bodyTypes"
         android:textSize="24sp"
         tools:text="transmissionTypes">
 

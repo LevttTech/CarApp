@@ -1,5 +1,6 @@
 package com.wapp.carapp.ui.adapters;
 
+import android.content.Context;
 import android.media.Image;
 import android.text.TextUtils;
 import android.view.View;
@@ -23,11 +24,18 @@ public class CarsAdapter extends BaseAdapter<Car>{
 
     @Override
     protected void bindView(ViewHolder<Car> holder, Car item) {
+        Context context = holder.itemView.getContext();
         CarViewHolder carHolder = (CarViewHolder) holder;
-        carHolder.productionYear.setText(item.getProductionYears());
-        carHolder.textViewModelName.setText(item.getModelName());
-        carHolder.transmissionTypes.setText(TextUtils.join(", ",item.getTransmissionTypes()));
-        carHolder.bodyTypes.setText(TextUtils.join(", ", item.getBodyTypes()));
+        carHolder.productionYear.setText(context.getString
+                (R.string.years_with_prefix,item.getProductionYears()));
+        carHolder.textViewModelName.setText(context.getString(
+                R.string.model_with_prefix,item.getModelName()));
+        carHolder.transmissionTypes.setText(context.getString(
+                R.string.transmission_with_prefix,
+                TextUtils.join(", ",item.getTransmissionTypes())));
+        carHolder.bodyTypes.setText(context.getString(
+                R.string.body_with_prefix,
+                TextUtils.join(", ", item.getBodyTypes())));
         Glide.with(holder.itemView)
                 .load(item.getModelImage())
                 .into(carHolder.modelImage);

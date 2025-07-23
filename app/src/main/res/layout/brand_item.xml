@@ -32,7 +32,6 @@
             android:id="@+id/textViewTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title"
             android:textSize="32dp"
             tools:text="BMW"
             />
@@ -41,7 +40,6 @@
             android:id="@+id/textViewCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/manufacture"
             android:textSize="18dp"
             tools:text="Germany"
             />
