@@ -1,5 +1,6 @@
 package com.wapp.carapp.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Brand item) {
                 Log.d("RV", "item" + item);
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("brand", item.getBrandName());
+                startActivity(intent);
             }
         });
         recyclerView = findViewById(R.id.recyclerViewItems);

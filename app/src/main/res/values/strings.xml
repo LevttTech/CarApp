@@ -2,4 +2,7 @@
     <string name="app_name">CarApp</string>
     <string name="title">%s</string>
     <string name="manufacture">Manufacture: %s</string>
+    <string name="s_modelName">%s</string>
+    <string name="s_productionYears">%s</string>
+    <string name="s_bodyTypes">%s</string>
 </resources>
