@@ -67,16 +67,6 @@ public class CarsAdapter extends BaseAdapter<Car>{
             bodyTypes = itemView.findViewById(R.id.textViewBodyTypes);
             transmissionTypes = itemView.findViewById(R.id.textViewTransmissionTypes);
 
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                int pos = getAdapterPosition();
-                @Override
-                public void onClick(View v) {
-                    if (pos != RecyclerView.NO_POSITION && listener != null) {
-                        listener.onItemClick(items.get(pos));
-                    }
-                }
-            });
         }
 
         @Override

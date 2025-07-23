@@ -22,6 +22,10 @@ import com.wapp.carapp.viewmodels.MainViewModel;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private MainViewModel viewModel;
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         recyclerViewSettings();
+
 
 
         viewModel.getBrands().observe(this, new Observer<List<Brand>>() {
