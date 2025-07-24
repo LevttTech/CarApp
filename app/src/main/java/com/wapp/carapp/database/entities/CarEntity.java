@@ -7,7 +7,6 @@ import java.util.List;
 
 @Entity(tableName = "cars", indices = {@Index(value = {"modelName"},unique = true)})
 public class CarEntity {
-    p
     private String modelName;
     private String modelImage;
     private String productionYears;
