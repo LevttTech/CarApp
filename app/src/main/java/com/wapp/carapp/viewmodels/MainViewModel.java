@@ -56,14 +56,14 @@ public class MainViewModel extends AndroidViewModel {
                             brands.setValue(brandsFromApi);},
                         throwable -> {
                             Log.d(TAG,throwable.getMessage());
-                            Database.getInstance(getApplication()).brandDao().getBrands()
+                            Disposable dis = Database.getInstance(getApplication()).brandDao().getBrands()
                                     .observeOn(AndroidSchedulers.mainThread())
                                                     .subscribe(brandEntities -> {
                                                         Log.d(TAG,"thread in rxjava:" + Thread.currentThread().getName());
                                                         brands.setValue(mapToBrands(brandEntities));
                                                     });
                             Log.d(TAG,"thread in error:" + Thread.currentThread().getName());
-
+                            compositeDisposable.add(dis);
                         }
                 );
         compositeDisposable.add(d);
@@ -91,7 +91,7 @@ public class MainViewModel extends AndroidViewModel {
     protected void onCleared() {
         super.onCleared();
         Log.d(TAG,"onCleared()");
-        compositeDisposable.dispose();
+        compositeDisposable.clear();
     }
 
 }
