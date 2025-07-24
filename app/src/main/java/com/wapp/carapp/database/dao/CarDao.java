@@ -16,7 +16,7 @@ import io.reactivex.rxjava3.core.Single;
 public interface CarDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    Completable insert(Car car);
+    Completable insert(List<Car> cars);
 
     @Query("SELECT * FROM cars")
     Single<List<Car>> getCars();

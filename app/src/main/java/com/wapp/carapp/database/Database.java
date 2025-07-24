@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 import com.wapp.carapp.database.dao.BrandDao;
 import com.wapp.carapp.database.entities.BrandEntity;
 
-@androidx.room.Database(entities = {BrandEntity.class}, version = 3,exportSchema = false)
+@androidx.room.Database(entities = {BrandEntity.class}, version = 4,exportSchema = false)
 public abstract class Database extends RoomDatabase {
     private static Database instance = null;
     private static final String DB_NAME = "db";
