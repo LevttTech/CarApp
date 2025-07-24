@@ -1,17 +1,33 @@
 package com.wapp.carapp.database.entities;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.Index;
+import androidx.room.Insert;
 import androidx.room.PrimaryKey;
+
+import com.wapp.carapp.models.Brand;
 
 import java.util.List;
 
-@Entity(tableName = "brands")
+@Entity(tableName = "brands",indices = {@Index(value = {"brandName"}, unique = true)})
 public class BrandEntity {
-    @PrimaryKey
+
+    @PrimaryKey(autoGenerate = true)
     public int id;
     public String brandName;
     public String brandLogo;
     public String brandCountry;
 
+    @Ignore
+    public BrandEntity(String brandName, String brandLogo, String brandCountry) {
+        this(0, brandName, brandLogo, brandCountry);
+    }
 
+    public BrandEntity(int id, String brandName, String brandLogo, String brandCountry) {
+        this.id = id;
+        this.brandName = brandName;
+        this.brandLogo = brandLogo;
+        this.brandCountry = brandCountry;
+    }
 }
