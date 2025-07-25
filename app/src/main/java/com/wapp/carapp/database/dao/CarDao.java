@@ -5,6 +5,8 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import com.wapp.carapp.database.entities.CarEntity;
+import com.wapp.carapp.models.Brand;
 import com.wapp.carapp.models.Car;
 
 import java.util.List;
@@ -16,8 +18,8 @@ import io.reactivex.rxjava3.core.Single;
 public interface CarDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    Completable insert(List<Car> cars);
+    Completable insert(List<CarEntity> cars);
 
-    @Query("SELECT * FROM cars")
-    Single<List<Car>> getCars();
+    @Query("SELECT * FROM cars WHERE brandName = :brand")
+    Single<List<CarEntity>> getCarsByBrand(String brand);
 }

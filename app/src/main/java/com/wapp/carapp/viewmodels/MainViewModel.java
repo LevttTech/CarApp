@@ -39,54 +39,31 @@ public class MainViewModel extends AndroidViewModel {
 
     public void loadBrands() {
         Disposable d = ApiFactory.getApiService().getBrands()
+                .map(BrandEntity::toBrandEntity)
                 .doOnSuccess((brandsFromApi) -> {
-                    List<BrandEntity> brandEntities = toBrandEntity(brandsFromApi);
-                    Log.d(TAG,"cur thread:" + Thread.currentThread().getName());
                     Database.getInstance(getApplication()).brandDao().insertBrands(
-                    brandEntities
+                            brandsFromApi
                     ).subscribe();
                 })
-                .doOnTerminate(()-> {
-                    Log.d(TAG,"afterterminate THREAD="+Thread.currentThread().getName());
-                })
+                .map(BrandEntity::mapToBrands)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         brandsFromApi -> {
-                            Log.d(TAG,"Onsuccses() thread="+Thread.currentThread().getName());
-                            brands.setValue(brandsFromApi);},
+                                brands.setValue(brandsFromApi);
+                            },
                         throwable -> {
                             Log.d(TAG,throwable.getMessage());
                             Disposable dis = Database.getInstance(getApplication()).brandDao().getBrands()
+                                    .map(BrandEntity::mapToBrands)
                                     .observeOn(AndroidSchedulers.mainThread())
-                                                    .subscribe(brandEntities -> {
-                                                        Log.d(TAG,"thread in rxjava:" + Thread.currentThread().getName());
-                                                        brands.setValue(mapToBrands(brandEntities));
+                                                    .subscribe(brandFromDb -> {
+                                                        brands.setValue(brandFromDb);
                                                     });
-                            Log.d(TAG,"thread in error:" + Thread.currentThread().getName());
                             compositeDisposable.add(dis);
                         }
                 );
         compositeDisposable.add(d);
     }
-    private List<Brand> mapToBrands(List<BrandEntity> brandEntities) {
-        return brandEntities.stream()
-                .map(entity -> new Brand(
-                        entity.brandName,
-                        entity.brandLogo,
-                        entity.brandCountry
-                ))
-                .collect(Collectors.toList());
-    }
-    private List<BrandEntity> toBrandEntity(List<Brand> brands) {
-        return brands.stream()
-                .map(brand -> new BrandEntity(
-                        brand.getBrandName(),
-                        brand.getBrandLogo(),
-                        brand.getBrandCountry()
-                ))
-                .collect(Collectors.toList());
-    }
-
         @Override
     protected void onCleared() {
         super.onCleared();

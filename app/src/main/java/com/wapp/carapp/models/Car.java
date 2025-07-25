@@ -10,13 +10,24 @@ public class Car {
 
     private List<String> bodyTypes;
     private List<String> transmissionTypes;
+    private String brandName;
 
-    public Car(String modelName, String modelImage, String productionYears, List<String> bodyTypes, List<String> transmissionTypes) {
+    public Car(String modelName, String modelImage, String productionYears, List<String> bodyTypes, List<String> transmissionTypes,
+               String brandName) {
         this.modelName = modelName;
         this.modelImage = modelImage;
         this.productionYears = productionYears;
         this.bodyTypes = bodyTypes;
         this.transmissionTypes = transmissionTypes;
+        this.brandName = brandName;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
     }
 
     public String getModelName() {

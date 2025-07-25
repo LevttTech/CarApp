@@ -52,7 +52,7 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         viewModel.loadCarsByBrand(brandName);
-
+        Log.d("DetailActivity","brandName="+brandName);
     }
 
     public static Intent newIntent(Context context, String brandName) {
